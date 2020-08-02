@@ -13,3 +13,14 @@ def all_events(request):
     }
 
     return render(request, 'events/events.html', context)
+
+def event_detail(request, event_id):
+    """ A view to show individual event details """
+
+    event = get_object_or_404(Event, pk=event_id)
+
+    context = {
+        'event': event,
+    }
+
+    return render(request, 'events/event_detail.html', context)
