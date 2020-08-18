@@ -26,7 +26,7 @@ SECRET_KEY = '#!_-$g+5qu_ejqjfzga94y$sj-_5$vl3u%aut&$qg0(pe-(e2q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://event-task-app.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = ['event-task-app.herokuapp.com', 'localhost']
 
 
 # Application definition
