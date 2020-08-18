@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Event, Category
 from django.db.models.functions import Lower
+
+from .models import Event, Category
+from .forms import EventForm
 
 # Create your views here.
 
@@ -66,3 +68,13 @@ def event_detail(request, event_id):
     }
 
     return render(request, 'events/event_detail.html', context)
+
+def add_event(request):
+    """ Add an event to the store """
+    form = EventForm()
+    template = 'events/add_event.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
