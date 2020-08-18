@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -69,8 +70,13 @@ def event_detail(request, event_id):
 
     return render(request, 'events/event_detail.html', context)
 
+@login_required
 def add_event(request):
     """ Add a event to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
@@ -89,8 +95,13 @@ def add_event(request):
 
     return render(request, template, context)
 
+@login_required
 def edit_event(request, event_id):
     """ Edit an event in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     event = get_object_or_404(Event, pk=event_id)
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES, instance=event)
@@ -112,8 +123,13 @@ def edit_event(request, event_id):
 
     return render(request, template, context)
 
+@login_required
 def delete_event(request, event_id):
     """ Delete an event from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     event = get_object_or_404(Event, pk=event_id)
     event.delete()
     messages.success(request, 'Event deleted!')
