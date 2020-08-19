@@ -9,6 +9,7 @@ from .forms import EventForm
 
 # Create your views here.
 
+
 def all_events(request):
     """ A view to show all events, including sorting and search queries """
 
@@ -32,7 +33,7 @@ def all_events(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             events = events.order_by(sortkey)
-            
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             events = events.filter(category__name__in=categories)
@@ -43,7 +44,7 @@ def all_events(request):
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('events'))
-            
+
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             events = events.filter(queries)
 
@@ -70,6 +71,7 @@ def event_detail(request, event_id):
 
     return render(request, 'events/event_detail.html', context)
 
+
 @login_required
 def add_event(request):
     """ Add a event to the store """
@@ -87,13 +89,14 @@ def add_event(request):
             messages.error(request, 'Failed to add event. Please ensure the form is valid.')
     else:
         form = EventForm()
-        
+
     template = 'events/add_event.html'
     context = {
         'form': form,
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_event(request, event_id):
@@ -122,6 +125,7 @@ def edit_event(request, event_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_event(request, event_id):

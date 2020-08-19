@@ -3,6 +3,7 @@ from .models import Event, Category
 
 # Register your models here.
 
+
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         'sku',
@@ -15,11 +16,13 @@ class EventAdmin(admin.ModelAdmin):
 
     ordering = ('sku',)
 
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',
     )
+
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(Category, CategoryAdmin)
