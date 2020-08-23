@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Staff(models.Model):
     role = models.CharField(max_length=254)
     name = models.CharField(max_length=254)

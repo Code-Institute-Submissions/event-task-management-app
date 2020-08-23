@@ -27,7 +27,7 @@
 
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <p class="">Order Summary ({{ event_count }})</p>
+                <p class="">Order ({{ event_count }})</p>
                 <div class="row">
                     <div class="col-7 offset-2">
                         <p class="mb-1 mt-0 small">Item</p>
@@ -48,9 +48,8 @@
                             </a>
                         </div>
                         <div class="col-7">
-                            <p class="my-0"><strong>{{ item.event.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if item.event.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small">Qty: {{ item.quantity }}</p>
+                            <p class="my-0">{{ item.event.name }}</p>
+                            <p class="my-0 small">Quantity: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
                             <p class="my-0 small">${{ item.event.price | calc_subtotal:item.quantity }}</p>
@@ -67,12 +66,11 @@
                     <div class="col-3">
                         <p class="my-0">${{ total | floatformat:2 }}</p>
                         <p class="my-0">${{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0">${{ grand_total | floatformat:2 }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6">
-                <p class="">Please fill out the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="rounded px-3 mb-5">
@@ -91,12 +89,12 @@
                         {{ order_form.country | as_crispy_field }}
                         <div class="form-check form-check-inline float-right mr-0">
 							{% if user.is_authenticated %}
-								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+								<label class="form-check-label" for="id-save-info">Save delivery information</label>
                                 <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
 							{% else %}
 								<label class="form-check-label" for="id-save-info">
                                     <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save delivery information
                                 </label>
 							{% endif %}
 						</div>
@@ -128,7 +126,7 @@
 							<span class="icon text-warning">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+							<span>Your card will be charged ${{ grand_total|floatformat:2 }}</span>
 						</p>
 					</div>
                 </form>

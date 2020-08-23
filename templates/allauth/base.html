@@ -10,7 +10,7 @@
 
     {% if messages %}
     <div>
-      <strong>Messages:</strong>
+      Messages:
       <ul>
         {% for message in messages %}
         <li>{{message}}</li>
@@ -20,7 +20,7 @@
     {% endif %}
 
     <div>
-      <strong>Menu:</strong>
+      Menu:
       <ul>
         {% if user.is_authenticated %}
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Event, Category
+from .models import Event
 from .forms import EventForm
 
 # Create your views here.
@@ -15,7 +15,6 @@ def all_events(request):
 
     events = Event.objects.all()
     query = None
-    categories = None
     sort = None
     direction = None
 
@@ -26,18 +25,11 @@ def all_events(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 events = events.annotate(lower_name=Lower('name'))
-            if sortkey == 'category':
-                sortkey = 'category__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             events = events.order_by(sortkey)
-
-        if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            events = events.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -53,7 +45,6 @@ def all_events(request):
     context = {
         'events': events,
         'search_term': query,
-        'current_categories': categories,
         'current_sorting': current_sorting,
     }
 

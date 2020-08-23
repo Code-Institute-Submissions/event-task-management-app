@@ -19,21 +19,15 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Thank You</h2>
+                <h2 class="logo-font mb-4">Thank You! You Won't Regret!</h2>
                 <hr>
-                <p class="">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                <p class="">A confirmation email will be sent to {{ order.email }}.</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-lg-7">
                 <div class="order-confirmation-wrapper p-2 border border-warning">
-                    <div class="row">
-                        <div class="col">
-                            <small class="">Order Info:</small>
-                        </div>
-                    </div>
-                    <br>
 
                     <div class="row">
                         <div class="col-12 col-md-4">
@@ -46,7 +40,7 @@
 
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <p class="mb-0 ">Order Date</p>
+                            <p class="mb-0 ">Date</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
                             <p class="mb-0">{{ order.date }}</p>
@@ -56,7 +50,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="">Order Details:</small>
+                            <small class="">Order:</small>
                         </div>
                     </div>
                     <br>
@@ -65,7 +59,7 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="small mb-0 ">
-                                {{ item.event.name }}{% if item.event_size %} - Size {{ item.event.size|upper }}{% endif %}
+                                {{ item.event.name }}
                             </p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
@@ -77,7 +71,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="">Delivering To:</small>
+                            <small class="">Delivery:</small>
                         </div>
                     </div>
                     <br>
@@ -163,7 +157,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="">Billing Info:</small>
+                            <small class="">Billing:</small>
                         </div>
                     </div>
                     <br>
@@ -207,11 +201,11 @@
                         <span class="text-uppercase text-dark">Back to Profile</span>
                     </a>
                 {% else %}
-                    <a href="{% url 'events' %}?category=new_arrivals,deals,clearance" class="btn btn-black rounded-0 my-2 border border-warning bg-warning">
+                    <a href="{% url 'events' %}" class="btn btn-black rounded-0 my-2 border border-warning bg-warning">
                         <span class="icon mr-2 text-dark">
                             <i class="fas fa-gifts"></i>
                         </span>
-                        <span class="text-uppercase text-dark">Now check out the latest deals!</span>
+                        <span class="text-uppercase text-dark">I want more events!</span>
                     </a>
                 {% endif %}
 			</div>
