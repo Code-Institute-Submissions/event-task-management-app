@@ -1,30 +1,24 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item d-block d-md-none">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}" id="home-link">
+            <a class="logo-font nav-link text-warning mr-5" href="{% url 'home' %}" id="home-link">
                 Home
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Events
+            <a class="logo-font nav-link text-warning mr-5" href="{% url 'events' %}" id="all-products-link" aria-haspopup="true" aria-expanded="false">
+                Events
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'events' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
-                <a href="{% url 'events' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
-                <a href="{% url 'events' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
-                <a href="{% url 'events' %}" class="dropdown-item">All Events</a>
-            </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'venues' %}" id="homeware-link" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font nav-link text-warning mr-5" href="{% url 'venues' %}" id="homeware-link" aria-haspopup="true" aria-expanded="false">
                 Venues
             </a>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'staff' %}" id="clothing-link"  aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font nav-link text-warning mr-5" href="{% url 'staff' %}" id="clothing-link"  aria-haspopup="true" aria-expanded="false">
                 Staff
             </a>
         </li>
