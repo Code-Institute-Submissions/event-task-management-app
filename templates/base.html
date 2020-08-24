@@ -51,9 +51,9 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'events' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border border-warning bg-dark rounded-0 text-warning" type="text" name="q">
+                        <input class="form-control border border-warning bg-dark rounded-circle text-warning text-center" type="text" name="q">
                         <div class="input-group-append">
-                            <button class="form-control btn btn-black border border-warning bg-warning text-dark rounded-0" type="submit">
+                            <button class="form-control btn btn-black border border-warning bg-warning text-dark rounded-circle" type="submit">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -104,7 +104,7 @@
         <div class="row bg-dark">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon text-warning"></span>
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}

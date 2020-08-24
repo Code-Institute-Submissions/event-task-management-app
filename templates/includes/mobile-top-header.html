@@ -5,13 +5,13 @@
             <p class="my-0">Search</p>
         </div>
     </a>
-    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0 bg-dark" aria-labelledby="mobile-search">
         <form class="form" method="GET" action="{% url 'events' %}">
             <div class="input-group w-100">
-                <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                <input class="form-control border border-warning bg-dark rounded-circle text-center text-warning" type="text" name="q" placeholder="">
                 <div class="input-group-append">
-                    <button class="form-control form-control btn btn-black border border-black rounded-0" type="submit">
-                        <span class="icon">
+                    <button class="form-control form-control btn btn-black border border-warning bg-warning rounded-circle" type="submit">
+                        <span class="icon text-dark">
                             <i class="fas fa-search"></i>
                         </span>
                     </button>
@@ -24,19 +24,19 @@
     <a class="text-warning nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-user fa-lg"></i></div>
-            <p class="my-0">My Account</p>
+            <p class="my-0">Account</p>
         </div>
     </a>
-    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+    <div class="dropdown-menu border border-warning bg-dark" aria-labelledby="user-options">
         {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
-                <a href="{% url 'add_event' %}" class="dropdown-item">Event Management</a>
+                <a href="{% url 'add_event' %}" class="dropdown-item text-warning">Add Event</a>
             {% endif %}
-            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+            <a href="{% url 'profile' %}" class="dropdown-item text-warning">Profile</a>
+            <a href="{% url 'account_logout' %}" class="dropdown-item text-warning">Logout</a>
         {% else %}
-            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+            <a href="{% url 'account_signup' %}" class="dropdown-item text-warning">Register</a>
+            <a href="{% url 'account_login' %}" class="dropdown-item text-warning">Login</a>
         {% endif %}
     </div>
 </li>
